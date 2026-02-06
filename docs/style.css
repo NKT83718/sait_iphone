@@ -252,7 +252,7 @@ img,iframe,table{max-width:100%}
 }
 
 .kontakty input{height:38px}
-.kontakty textarea{height:160px;resize:vertical}
+.kontakty textarea{height:160px;resize:vertical;max-height:300px}
 
 .cap{text-transform:capitalize}
 
@@ -356,3 +356,4 @@ img,iframe,table{max-width:100%}
   .kratko{font-size:13px}
   .menu a{font-size:16px}
 }
+
