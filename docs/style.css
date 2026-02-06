@@ -1,21 +1,31 @@
 *{box-sizing:border-box}
 
-html,body{
-height:100%;
-margin:0
-scrollbar-gutter: stable;
+html{
+  height:100%;
+  background:transparent;
+  overflow-y:scroll;
+  scrollbar-gutter:stable;
 }
 
 body{
+  min-height:100%;
+  margin:0;
   font-family:Arial,Helvetica,sans-serif;
   color:#000;
-  background-color:#000;
-  background-image:url("background1.png");
-  background-repeat:no-repeat;
-  background-position:center top;
-  background-size:cover;
-  background-attachment:fixed;
+  overflow-x:hidden;
+  position:relative;
+  z-index:0;
 }
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:#000 url("background1.png") center/cover no-repeat;
+  z-index:-1;
+}
+
+img,iframe,table{max-width:100%}
 
 .container{
   width:960px;
@@ -23,6 +33,8 @@ body{
   margin:0 auto;
   min-height:100vh;
   background:transparent;
+  position:relative;
+  z-index:1;
 }
 
 .panel{
@@ -93,7 +105,6 @@ body{
 }
 
 .kratko{color:#707070;font-size:14px;font-style:italic;line-height:16px}
-
 .podrobno{color:#484343;font-size:16px;font-weight:400;line-height:24px;text-align:left}
 
 .catalog-list{
@@ -196,7 +207,7 @@ body{
   gap:14px 24px;
 }
 
-.form-wide{grid-column:1 / -1}
+.form-wide{grid-column:1/-1}
 
 .kontakty input,
 .kontakty textarea{
@@ -205,7 +216,7 @@ body{
   color:#333;
   padding:8px 10px;
   border:1px solid rgba(207,207,207,.9);
-  border-radius:4px;
+  border-radius:12px;
   background:rgba(255,255,255,.45);
   outline:none;
   backdrop-filter:blur(2px);
@@ -214,6 +225,7 @@ body{
 
 .kontakty input{height:38px}
 .kontakty textarea{height:160px;resize:vertical}
+
 .cap{text-transform:capitalize}
 
 .email:focus,
@@ -233,13 +245,8 @@ body{
   margin-top:10px;
 }
 
-.kontakty container{
-margin:0 0 0 550px;
-}
-
-@media (max-width: 768px){
+@media (max-width:768px){
   body{
-    background-attachment:scroll;
     font-size:18px;
     -webkit-text-size-adjust:100%;
     text-size-adjust:100%;
@@ -256,10 +263,7 @@ margin:0 0 0 550px;
     gap:10px;
   }
 
-  .logo{
-    padding-left:16px;
-    font-size:22px;
-  }
+  .logo{padding-left:16px;font-size:22px}
 
   .menu{
     margin-left:0;
@@ -274,56 +278,46 @@ margin:0 0 0 550px;
     display:block;
     padding:12px 14px;
     font-size:18px;
-    border-radius:10px;
+    border-radius:12px;
     background:rgba(255,255,255,.35);
   }
 
-  h1{font-size:30px; margin:10px 0 12px}
+  h1{font-size:30px;margin:10px 0 12px}
   h2{font-size:22px}
-  .zagolovok{font-size:20px; padding:12px 12px}
+  .zagolovok{font-size:20px;padding:12px 12px}
 
-  .catalog-list{flex-direction:column; gap:14px}
-  .catalog-item{width:100%; padding:14px}
-  .catalog-item img{width:160px; height:auto}
+  .catalog-list{flex-direction:column;gap:14px}
+  .catalog-item{width:100%;padding:14px}
 
-  .product-top{flex-direction:column; gap:14px}
+  .product-top{flex-direction:column;gap:14px}
   .product-right{min-width:0}
 
   .buy{
     width:100%;
+    text-align:center;
     padding:14px 18px;
     font-size:18px;
     border-radius:12px;
   }
 
-  .tablica{
-    table-layout:fixed;
-  }
-  .tablica th,.tablica td{
-    font-size:16px;
-    padding:10px 8px;
-    word-break:break-word;
-  }
+  .tablica th,.tablica td{font-size:16px;padding:10px 8px}
 
-  .form-grid{grid-template-columns:1fr; gap:14px}
-  .kontakty input{
-    height:54px;
-    font-size:18px;
-    border-radius:12px;
-  }
-  .kontakty textarea{
-    height:220px;
-    font-size:18px;
-    border-radius:12px;
-  }
+  .form-grid{grid-template-columns:1fr;gap:14px}
 
-  .btn-center{margin-top:14px}
-
-  .karta{height:374px}
+  .kontakty input{height:54px;font-size:18px}
+  .kontakty textarea{height:220px;font-size:18px}
 
   .footer{
     height:auto;
     padding:14px 16px 16px;
   }
+
   .footer p{font-size:16px}
+}
+
+@media (max-width:420px){
+  .zagolovok{font-size:16px}
+  .podrobno{font-size:15px;line-height:22px}
+  .kratko{font-size:13px}
+  .menu a{font-size:16px}
 }
