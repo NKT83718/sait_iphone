@@ -229,7 +229,7 @@ body{
   margin-top:10px;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1250px){
   body{
     background-attachment:scroll;
     font-size:18px;
@@ -320,3 +320,4 @@ body{
   .footer p{font-size:16px}
 
 }
+
